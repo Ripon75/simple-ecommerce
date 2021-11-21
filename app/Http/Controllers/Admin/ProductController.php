@@ -49,7 +49,6 @@ class ProductController extends Controller
             $fileName  = time().'.'.$extension;
             $file->move('upload/productImages/', $fileName);
             $product->image = $fileName;
-
         }
         $product->save();
 
@@ -95,18 +94,18 @@ class ProductController extends Controller
         if($request->hasFile('image'))
         {
 
-        $oldImage = 'upload/productImages/'.$product->image;
+            $oldImage = 'upload/productImages/'.$product->image;
 
-        if(File::exists($oldImage))
-        {
-            File::delete($oldImage);
-        }
+            if(File::exists($oldImage))
+            {
+                File::delete($oldImage);
+            }
 
-        $file      = $request->file('image');
-        $extension = $file->getClientOriginalExtension();
-        $fileName  = time().'.'.$extension;
-        $file->move('upload/productImages/', $fileName);
-        $product->image = $fileName;
+            $file      = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $fileName  = time().'.'.$extension;
+            $file->move('upload/productImages/', $fileName);
+            $product->image = $fileName;
         }
 
         $product->save();

@@ -24,7 +24,7 @@ class HomeController extends Controller
         }
         else
         {
-            $products = Product::paginate(3);
+            $products = Product::paginate(10);
 
             $user = Auth::user();
             $count = Card::where('phone',$user->phone)->count();
@@ -45,7 +45,7 @@ class HomeController extends Controller
         }
         else
         {
-            $products = Product::paginate(3);
+            $products = Product::paginate(10);
 
             return view('user.home', [
                 'products' => $products
